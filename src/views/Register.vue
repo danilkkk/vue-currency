@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">Домашняя бухгалтерия</span>
+      <span class="card-title center">Financial control</span>
       <div class="input-field">
         <input
           id="name"
@@ -75,7 +75,7 @@
     </div>
     <div class="card-action">
       <div>
-        <button class="btn waves-effect waves-light auth-submit" type="submit">
+        <button class="btn waves-effect waves-light auth-submit grey darken-4" type="submit">
           Зарегистрироваться
           <i class="material-icons right">send</i>
         </button>
@@ -83,7 +83,7 @@
 
       <p class="center">
         Уже есть аккаунт?
-        <router-link to="/login">Войти!</router-link>
+        <router-link class="text-blue text-darken-4" to="/login"> Войти!</router-link>
       </p>
     </div>
   </form>
@@ -94,6 +94,9 @@ import { email, required, minLength } from "vuelidate/lib/validators";
 
 export default {
   name: "register",
+  metaInfo() {
+    return { title: this.$title("Title_Register") };
+  },
   data: () => ({
     email: "",
     password: "",

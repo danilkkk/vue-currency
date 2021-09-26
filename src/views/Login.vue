@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">Домашняя бухгалтерия</span>
+      <h2 class="card-title center">Financial control</h2>
       <div class="input-field">
         <input
           id="email"
@@ -54,7 +54,7 @@
     </div>
     <div class="card-action">
       <div>
-        <button class="btn waves-effect waves-light auth-submit" type="submit">
+        <button class="btn waves-effect waves-light auth-submit grey darken-4" type="submit">
           Войти
           <i class="material-icons right">send</i>
         </button>
@@ -77,6 +77,9 @@ export default {
     email: "",
     password: "",
   }),
+  metaInfo() {
+    return { title: this.$title("Title_Login") };
+  },
   validations: {
     email: { email, required },
     password: { required, minLength: minLength(6) },

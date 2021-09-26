@@ -25,7 +25,7 @@ export default {
                     ...getters.info,
                     ...toUpdate
                 };
-                await firebase.database.ref(`/users/${uid}/info`).update(updateData);
+                await firebase.database().ref(`/users/${uid}/info`).update(updateData);
                 commit('setInfo', updateData);
             } catch (e) {
                 commit('setError', e);

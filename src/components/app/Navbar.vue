@@ -1,18 +1,18 @@
 /* eslint-disable no-undef */
 <template>
-  <nav class="navbar orange lighten-1">
+  <nav class="navbar grey darken-4">
     <div class="nav-wrapper">
       <div class="navbar-left">
         <a href="#" @click.prevent="$emit('click')">
-          <i class="material-icons black-text">dehaze</i>
+          <i class="material-icons grey-text">dehaze</i>
         </a>
-        <span class="black-text">{{ date | date("datetime") }}</span>
+        <span class="grey-text">{{ date | date("datetime") }}</span>
       </div>
 
       <ul class="right hide-on-small-and-down">
         <li>
           <a
-            class="dropdown-trigger black-text"
+            class="dropdown-trigger grey-text"
             href="#"
             data-target="dropdown"
             ref="dropdown"

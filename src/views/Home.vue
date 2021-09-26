@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Счет</h3>
+      <h3>{{'Title_Bill' | localize}}</h3>
 
       <button
-        class="btn waves-effect waves-light btn-small"
+        class="btn waves-effect waves-light btn-small grey darken-4"
         @click.prevent="refresh"
       >
         <i class="material-icons">refresh</i>
@@ -26,10 +26,18 @@ import HomeCurrency from "@/components/HomeCurrency";
 
 export default {
   name: "home",
+  metaInfo() {
+    return { title: this.$title("Title_Bill") };
+  },
   data: () => ({
     loading: true,
     currency: null,
   }),
+  computed: {
+     locale() {
+      return this.$store.getters.info.locale;
+    }
+  },
   async mounted() {
     this.currency = await this.$store.dispatch("fetchCurrency");
     this.loading = false;
@@ -46,4 +54,4 @@ export default {
     HomeCurrency,
   },
 };
-</script>
+</script> 

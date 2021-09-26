@@ -27,18 +27,20 @@ export default {
                 return Object.keys(categories).map(key => ({
                     ...categories[key],
                     id: key
-                }));
-                /* 
-                //same code 
-                const cats = [];
-                Object.keys(categories).forEach(key => {
-                    cats.push({
-                        title: categories[key].title,
-                        limit: categories[key].limit,
-                        id: key
-                    })
-                })
-                return cats; */
+                }));               
+            } catch (e) {
+                commit('setError', e);
+                throw e;
+            }
+        },
+        async fetchCategoryById({
+            commit,
+            dispatch
+        }, id) {
+            try {
+                const uid = await dispatch('getUid');
+                const category = (await firebase.database().ref(`/users/${uid}/categories`).child(id).once('value')).val() || {};
+                return category;        
             } catch (e) {
                 commit('setError', e);
                 throw e;
